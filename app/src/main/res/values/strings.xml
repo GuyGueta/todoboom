@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">todoboom</string>
+    <string name="button">Button</string>
+    <string name="please_insert_text">please insert text</string>
+    <string name="first_text_view_string">look at me ! :)</string>
 </resources>
