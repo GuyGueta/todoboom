@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="30dp"
     tools:context=".MainActivity">
 
 
@@ -28,7 +28,6 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/please_insert_text"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -37,17 +36,15 @@
         />
 
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/first_text_view_string"
-        app:layout_constraintBottom_toBottomOf="@id/editText1"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.2"
-        app:layout_constraintLeft_toLeftOf="@id/editText1"
-        app:layout_constraintRight_toRightOf="@id/editText1"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="410dp"
+        android:layout_height="567dp"
+        app:layout_constraintHeight_percent="50"
+        app:layout_constraintWidth_percent="100"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-3dp"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

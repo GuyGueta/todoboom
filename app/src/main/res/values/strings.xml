@@ -3,4 +3,5 @@
     <string name="button">CREATE</string>
     <string name="please_insert_text">Insert text here</string>
     <string name="first_text_view_string" />
+    <string name="TodoItem">"this is todo item "</string>
 </resources>
