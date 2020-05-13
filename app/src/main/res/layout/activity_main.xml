@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
@@ -14,10 +13,10 @@
         android:layout_height="wrap_content"
         android:text="@string/button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/editText1"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="@id/editText1"
+        app:layout_constraintRight_toRightOf="@id/editText1"
+        app:layout_constraintTop_toTopOf="@id/editText1"
         app:layout_constraintVertical_bias="0.5"
         />
 
@@ -25,16 +24,18 @@
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/please_insert_text"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginBottom="25dp"/>
+        app:layout_constraintVertical_bias="0.747"
+        />
+
 
     <TextView
         android:id="@+id/textView1"
@@ -42,12 +43,11 @@
         android:layout_height="wrap_content"
         android:text="@string/first_text_view_string"
         app:layout_constraintBottom_toBottomOf="@id/editText1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.5"/>
-
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintLeft_toLeftOf="@id/editText1"
+        app:layout_constraintRight_toRightOf="@id/editText1"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

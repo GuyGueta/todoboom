@@ -1,5 +1,6 @@
 package com.guy_gueta.todoboom
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         myButton.setOnClickListener {
             val input = myEditText.text
+            myEditText.setText("please insert text")
             myTextView.text = input
         }
 
