@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Adapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private val items_list = ArrayList<TodoItem>()
 
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,14 @@ class MainActivity : AppCompatActivity() {
         val myAdapter = TodoItemAdaptor()
         initItems(savedInstanceState)
         setAdapter(myAdapter)
+        setButton(myButton, myEditText, myAdapter)
+    }
+
+
+
+
+    private fun setButton(myButton : Button, myEditText : EditText, myAdapter : TodoItemAdaptor)
+    {
         myButton.setOnClickListener {
             val input = myEditText.text
             myEditText.setText("")
@@ -31,10 +41,20 @@ class MainActivity : AppCompatActivity() {
                 val item = TodoItem(input.toString(), false)
                 items_list.add(item)
                 myAdapter.setAdapter(items_list)
+                Toast.makeText(
+                    applicationContext,
+                    String.format("ToDo %s is now DONE. BOOM!", item._todoValue),
+                    Toast.LENGTH_SHORT).show()
+
+            }
+            else
+            {
+                Toast.makeText(
+                    applicationContext,"you can't create an empty TODO item, oh silly!" ,
+                    Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 
     private fun setAdapter(adapter: TodoItemAdaptor)
     {
