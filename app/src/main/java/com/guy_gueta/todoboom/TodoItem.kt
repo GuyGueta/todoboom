@@ -1,10 +1,6 @@
 package com.guy_gueta.todoboom
 
-class TodoItem(val todoValue : String)
-{
-    fun createItem() : List<TodoItem>
-    {
-        val itemList = mutableListOf<TodoItem>()
-        return itemList
-    }
-}
+
+
+data class TodoItem(var _todoValue : String, var _Clicked : Boolean)
+
