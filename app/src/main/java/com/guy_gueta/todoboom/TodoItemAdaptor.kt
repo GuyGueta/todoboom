@@ -45,7 +45,6 @@ class TodoItemAdaptor : RecyclerView.Adapter<TodoItemHolder>() {
             {
                 holder.checkBox.isChecked = false
                 item._Clicked = false
-                setAdapter(_itemsList)
             }
             callback(item)
 
