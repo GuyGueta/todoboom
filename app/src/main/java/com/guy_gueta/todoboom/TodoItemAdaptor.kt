@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class TodoItemAdaptor : RecyclerView.Adapter<TodoItemHolder>() {
     private val _itemsList: ArrayList<TodoItem> = ArrayList()
-    var _TodoItemButtonCallback: ToDoItemButtonListener? = null
+    var onTodoItemClickCallback: ((TodoItem) -> Unit)? = null
 
 
     fun setAdapter(items : ArrayList<TodoItem>)
@@ -29,17 +29,35 @@ class TodoItemAdaptor : RecyclerView.Adapter<TodoItemHolder>() {
         val todoItem = _itemsList[position]
         holder.todoItemText.text = todoItem._todoValue
         holder.checkBox.isChecked = todoItem._Clicked
-        holder.itemView.setOnClickListener {
-            _TodoItemButtonCallback?.onToDoItemClicked(todoItem, this)
-        }
-
     }
 
+    private fun onTodoItemClicked(holder: TodoItemHolder)
+    {
+        holder.itemView.setOnClickListener {
+            val item = _itemsList[holder.adapterPosition]
+            val callback = onTodoItemClickCallback ?: return@setOnClickListener
+            if (!item._Clicked)
+            {
+                holder.checkBox.isChecked = true
+                item._Clicked = true
+            }
+            else
+            {
+                holder.checkBox.isChecked = false
+                item._Clicked = false
+                setAdapter(_itemsList)
+            }
+            callback(item)
+
+    }
+}
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoItemHolder {
         val context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.to_do_item, parent, false)
-        return TodoItemHolder(view)
+        val holder = TodoItemHolder(view)
+        onTodoItemClicked(holder)
+        return holder
     }
 }

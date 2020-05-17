@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 myAdapter.setAdapter(items_list)
                 Toast.makeText(
                     applicationContext,
-                    String.format("ToDo %s is now DONE. BOOM!", item._todoValue),
+                    String.format("ToDo task %s has created. BOOM!", item._todoValue),
                     Toast.LENGTH_SHORT).show()
 
             }
@@ -59,10 +59,26 @@ class MainActivity : AppCompatActivity() {
     private fun setAdapter(adapter: TodoItemAdaptor)
     {
         adapter.setAdapter(items_list)
-        adapter._TodoItemButtonCallback = ToDoItemButtonListener(items_list)
         todo_items_recycler_view.adapter = adapter
         todo_items_recycler_view.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        adapter.onTodoItemClickCallback = { todoItem ->
+            if (todoItem._Clicked)
+            {
+                Toast.makeText(this, "TODO ${todoItem._todoValue} is now DONE. BOOM!",
+                                Toast.LENGTH_SHORT).show()
+                todoItem._Clicked = true
+                adapter.setAdapter(items_list)
+            }
+            else
+            {
+                Toast.makeText(this, "TODO ${todoItem._todoValue} is NOT DONE. BOOMER!",
+                    Toast.LENGTH_SHORT).show()
+                todoItem._Clicked = false
+                adapter.setAdapter(items_list)
+            }
+
+        }
     }
 
     private fun initItems(State: Bundle?){
