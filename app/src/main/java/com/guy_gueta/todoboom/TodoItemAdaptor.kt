@@ -1,13 +1,14 @@
 package com.guy_gueta.todoboom
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class TodoItemAdaptor : RecyclerView.Adapter<TodoItemHolder>() {
     private val _itemsList: ArrayList<TodoItem> = ArrayList()
     var onTodoItemClickCallback: ((TodoItem) -> Unit)? = null
-
+    var onTodoItemLongClickCallback :((TodoItem) -> Unit)? = null
 
     fun setAdapter(items : ArrayList<TodoItem>)
     {
@@ -35,7 +36,7 @@ class TodoItemAdaptor : RecyclerView.Adapter<TodoItemHolder>() {
     {
         holder.itemView.setOnClickListener {
             val item = _itemsList[holder.adapterPosition]
-            val callback = onTodoItemClickCallback ?: return@setOnClickListener
+            val shortCallback = onTodoItemClickCallback ?: return@setOnClickListener
             if (!item._Clicked)
             {
                 holder.checkBox.isChecked = true
@@ -46,10 +47,17 @@ class TodoItemAdaptor : RecyclerView.Adapter<TodoItemHolder>() {
                 holder.checkBox.isChecked = false
                 item._Clicked = false
             }
-            callback(item)
+            shortCallback.invoke(item)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            val item = _itemsList[holder.adapterPosition]
+            onTodoItemLongClickCallback?.invoke(item)
+            return@setOnLongClickListener true
+        }
 
     }
-}
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoItemHolder {

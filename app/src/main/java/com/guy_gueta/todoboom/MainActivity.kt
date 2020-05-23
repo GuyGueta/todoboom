@@ -1,11 +1,13 @@
 package com.guy_gueta.todoboom
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Adapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    private fun setLongListener()
+    {
+
+    }
 
 
     private fun setButton(myButton : Button, myEditText : EditText, myAdapter : TodoItemAdaptor)
@@ -77,7 +83,16 @@ class MainActivity : AppCompatActivity() {
                 todoItem._Clicked = false
                 adapter.setAdapter(items_list)
             }
-
+        }
+        adapter.onTodoItemLongClickCallback = {todoItem ->
+            val alertDialog = AlertDialog.Builder(this@MainActivity)
+            alertDialog.setTitle("Would you like to delete this todo item?")
+            alertDialog.setPositiveButton("Confirm") { _: DialogInterface, _: Int ->
+                items_list.remove(todoItem)
+                adapter.setAdapter(items_list)
+            }
+            alertDialog.setNegativeButton("Cancel"){ _: DialogInterface, _: Int -> }
+            alertDialog.show()
         }
     }
 
