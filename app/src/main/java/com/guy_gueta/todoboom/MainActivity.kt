@@ -32,11 +32,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun setLongListener()
-    {
-
-    }
-
 
     private fun setButton(myButton : Button, myEditText : EditText, myAdapter : TodoItemAdaptor)
     {
