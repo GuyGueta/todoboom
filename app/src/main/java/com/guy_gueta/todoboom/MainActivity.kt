@@ -1,9 +1,9 @@
 package com.guy_gueta.todoboom
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.Adapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -15,8 +15,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private val Context.app: MyApp
+        get() = applicationContext as MyApp
 
-    private val items_list = ArrayList<TodoItem>()
+
 
 
     @SuppressLint("SetTextI18n")
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         initItems(savedInstanceState)
         setAdapter(myAdapter)
         setButton(myButton, myEditText, myAdapter)
+
     }
 
 
@@ -36,12 +39,15 @@ class MainActivity : AppCompatActivity() {
     private fun setButton(myButton : Button, myEditText : EditText, myAdapter : TodoItemAdaptor)
     {
         myButton.setOnClickListener {
+            val itemsList = app.appManger.itemsList
             val input = myEditText.text
             myEditText.setText("")
             if (input.toString() != "") {
                 val item = TodoItem(input.toString(), false)
-                items_list.add(item)
-                myAdapter.setAdapter(items_list)
+                itemsList.add(item)
+                myAdapter.setAdapter(itemsList)
+                app.appManger.saveData()
+
                 Toast.makeText(
                     applicationContext,
                     String.format("ToDo task %s has created. BOOM!", item._todoValue),
@@ -59,7 +65,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setAdapter(adapter: TodoItemAdaptor)
     {
-        adapter.setAdapter(items_list)
+        val itemsList = app.appManger.itemsList
+        adapter.setAdapter(itemsList)
         todo_items_recycler_view.adapter = adapter
         todo_items_recycler_view.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -69,22 +76,27 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "TODO ${todoItem._todoValue} is now DONE. BOOM!",
                                 Toast.LENGTH_SHORT).show()
                 todoItem._Clicked = true
-                adapter.setAdapter(items_list)
+                adapter.setAdapter(itemsList)
+                app.appManger.saveData()
+
             }
             else
             {
                 Toast.makeText(this, "TODO ${todoItem._todoValue} is NOT DONE. BOOMER!",
                     Toast.LENGTH_SHORT).show()
                 todoItem._Clicked = false
-                adapter.setAdapter(items_list)
+                adapter.setAdapter(itemsList)
+                app.appManger.saveData()
+
             }
         }
         adapter.onTodoItemLongClickCallback = {todoItem ->
             val alertDialog = AlertDialog.Builder(this@MainActivity)
-            alertDialog.setTitle("Would you like to delete this todo item?")
+            alertDialog.setTitle("Are You Sure you want to delete this todo item?")
             alertDialog.setPositiveButton("Confirm") { _: DialogInterface, _: Int ->
-                items_list.remove(todoItem)
-                adapter.setAdapter(items_list)
+                itemsList.remove(todoItem)
+                adapter.setAdapter(itemsList)
+                app.appManger.saveData()
             }
             alertDialog.setNegativeButton("Cancel"){ _: DialogInterface, _: Int -> }
             alertDialog.show()
@@ -92,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initItems(State: Bundle?){
-        items_list.clear()
+        val itemsList = app.appManger.itemsList
         val inputEditText = findViewById<EditText>(R.id.editText1)
         val tempItems = ArrayList<TodoItem>()
         if (State != null) {
@@ -105,23 +117,27 @@ class MainActivity : AppCompatActivity() {
                     tempItems.add(TodoItem(allContents[i], isClickedArray[i]))
                 }
             }
+            itemsList.clear()
+            itemsList.addAll(tempItems)
 
         }
-        items_list.addAll(tempItems)
+
+
 
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         val inputText = findViewById<EditText>(R.id.editText1)
         super.onSaveInstanceState(outState)
+        val items = app.appManger.itemsList
         val inputVal  =  inputText.text.toString()
         outState.putString("userInput", inputVal)
-        val num_of_items  = items_list.size
+        val num_of_items  = items.size
         val valuesArray = arrayOfNulls<String>(num_of_items)
         val isCheckedArray = BooleanArray(num_of_items)
         for (i in 0 until num_of_items) {
-            valuesArray[i] = items_list[i]._todoValue
-            isCheckedArray[i] = items_list[i]._Clicked
+            valuesArray[i] = items[i]._todoValue
+            isCheckedArray[i] = items[i]._Clicked
         }
         outState.putStringArray("valuesArray", valuesArray)
         outState.putBooleanArray("isCheckedArray", isCheckedArray)

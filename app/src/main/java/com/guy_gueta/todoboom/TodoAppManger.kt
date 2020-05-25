@@ -11,11 +11,9 @@ class TodoAppManger(val context: Context)
 
     val itemsList: ArrayList<TodoItem> = ArrayList()
     private val spItemListKey = "SP_Todo_Items"
-    private val currentSizeTag = "the current size of your TODO list is: "
-    private val saveDataTag = "saveDataFun"
+    private val currentSizeTag = "the current size of your TODO list is "
 
     fun saveData(){
-        Log.i(saveDataTag, itemsList.size.toString())
         val jasonItemList = Gson().toJson(itemsList)
         val sp = context.getSharedPreferences(spItemListKey, Context.MODE_PRIVATE)
         sp.edit().putString(spItemListKey, jasonItemList).apply()

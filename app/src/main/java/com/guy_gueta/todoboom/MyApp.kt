@@ -2,7 +2,7 @@ package com.guy_gueta.todoboom
 
 import android.app.Application
 
-class myApp : Application()
+class MyApp : Application()
 {
     lateinit var appManger : TodoAppManger
 
