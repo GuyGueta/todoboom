@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 class TodoItemAdaptor : RecyclerView.Adapter<TodoItemHolder>() {
     private val _itemsList: ArrayList<TodoItem> = ArrayList()
     var onTodoItemClickCallback: ((TodoItem) -> Unit)? = null
-    var onTodoItemLongClickCallback :((TodoItem) -> Unit)? = null
+
 
     fun setAdapter(items : ArrayList<TodoItem>)
     {
@@ -28,43 +28,21 @@ class TodoItemAdaptor : RecyclerView.Adapter<TodoItemHolder>() {
 
     override fun onBindViewHolder(holder: TodoItemHolder, position: Int) {
         val todoItem = _itemsList[position]
-        holder.todoItemText.text = todoItem._todoValue
-        holder.checkBox.isChecked = todoItem._Clicked
+        holder.todoItemText.text = todoItem.content
+        holder.checkBox.isChecked = todoItem.isDone
     }
-
-    private fun onTodoItemClicked(holder: TodoItemHolder)
-    {
-        holder.itemView.setOnClickListener {
-            val item = _itemsList[holder.adapterPosition]
-            val shortCallback = onTodoItemClickCallback ?: return@setOnClickListener
-            if (!item._Clicked)
-            {
-                holder.checkBox.isChecked = true
-                item._Clicked = true
-            }
-            else
-            {
-                holder.checkBox.isChecked = false
-                item._Clicked = false
-            }
-            shortCallback.invoke(item)
-        }
-
-        holder.itemView.setOnLongClickListener {
-            val item = _itemsList[holder.adapterPosition]
-            onTodoItemLongClickCallback?.invoke(item)
-            return@setOnLongClickListener true
-        }
-
-    }
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoItemHolder {
         val context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.to_do_item, parent, false)
         val holder = TodoItemHolder(view)
-        onTodoItemClicked(holder)
+
+        holder.itemView.setOnClickListener {
+            val todoItem = _itemsList[holder.adapterPosition]
+            val callback = onTodoItemClickCallback ?: return@setOnClickListener
+            callback(todoItem)
+        }
         return holder
     }
 }

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotCompletedTodoActivity">
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edit"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.1" />
+
+    <Button
+        android:id="@+id/doneButtonNotC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="done"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"/>
+
+    <EditText
+        android:id="@+id/editText1NC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="12"
+        android:hint="Insert text here"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/editButton"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintLeft_toLeftOf="@id/editButton"
+        app:layout_constraintRight_toRightOf="@id/doneButtonNotC"
+        app:layout_constraintTop_toBottomOf="@id/textViewModified"
+        app:layout_constraintVertical_bias="0.946" />
+
+
+    <TextView
+        android:id="@+id/textViewContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Content: "/>
+
+    <TextView
+        android:id="@+id/textViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewContent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Id: "/>
+
+    <TextView
+        android:id="@+id/textViewCreated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewId"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Time created: "/>
+
+    <TextView
+        android:id="@+id/textViewModified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewCreated"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Time modified: "/>
+
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewModified"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="is done: "/>
+
+    <TextView
+        android:id="@+id/contentFiledNC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewContent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewContent"
+        app:layout_constraintTop_toTopOf="@id/textViewContent"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+    <TextView
+        android:id="@+id/idFiledNC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewId"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewId"
+        app:layout_constraintTop_toTopOf="@id/textViewId"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+    <TextView
+        android:id="@+id/createdFiledNC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewCreated"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewCreated"
+        app:layout_constraintTop_toTopOf="@id/textViewCreated"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+    <TextView
+        android:id="@+id/modifyFiledNC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewModified"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewModified"
+        app:layout_constraintTop_toTopOf="@id/textViewModified"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+    <TextView
+        android:id="@+id/doneFiledNC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewStatus"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewStatus"
+        app:layout_constraintTop_toTopOf="@id/textViewStatus"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

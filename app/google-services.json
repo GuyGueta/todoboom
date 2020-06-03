@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "36923138552",
+    "firebase_url": "https://guy-todobom.firebaseio.com",
+    "project_id": "guy-todobom",
+    "storage_bucket": "guy-todobom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36923138552:android:1fb1a5166ba5afbc84760d",
+        "android_client_info": {
+          "package_name": "com.guy_gueta.todoboom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36923138552-9453949ua873qj683c1fq34le19lp4i0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfr79ANrtRTk5L-4nsmmQ_L6Nu5L6E4VE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36923138552-9453949ua873qj683c1fq34le19lp4i0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

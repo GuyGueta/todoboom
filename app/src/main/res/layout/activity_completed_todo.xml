@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CompletedTodoActivity">
+
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.1" />
+
+    <Button
+        android:id="@+id/notCompletedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Undone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"/>
+
+
+
+    <TextView
+        android:id="@+id/textViewContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Content: "/>
+
+    <TextView
+        android:id="@+id/textViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewContent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Id: "/>
+
+    <TextView
+        android:id="@+id/textViewCreated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewId"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Time created: "/>
+
+    <TextView
+        android:id="@+id/textViewModified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewCreated"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Time modified: "/>
+
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewModified"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="is done: "/>
+
+    <TextView
+        android:id="@+id/contentFiled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewContent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewContent"
+        app:layout_constraintTop_toTopOf="@id/textViewContent"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+    <TextView
+        android:id="@+id/idFiled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewId"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewId"
+        app:layout_constraintTop_toTopOf="@id/textViewId"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+    <TextView
+        android:id="@+id/creationFiled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewCreated"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewCreated"
+        app:layout_constraintTop_toTopOf="@id/textViewCreated"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+    <TextView
+        android:id="@+id/modifyFiled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewModified"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewModified"
+        app:layout_constraintTop_toTopOf="@id/textViewModified"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+    <TextView
+        android:id="@+id/doneFiled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/textViewStatus"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewStatus"
+        app:layout_constraintTop_toTopOf="@id/textViewStatus"
+        app:layout_constraintHorizontal_bias="0.03" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

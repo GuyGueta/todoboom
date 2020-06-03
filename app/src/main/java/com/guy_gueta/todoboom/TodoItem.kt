@@ -2,5 +2,8 @@ package com.guy_gueta.todoboom
 
 
 
-data class TodoItem(var _todoValue : String, var _Clicked : Boolean)
+data class TodoItem(var content: String, var isDone: Boolean, val creation_timestamp: String,
+                    var edit_timestamp: String, var id: String = "") {
+    constructor(): this("", false, "", "", "")
+}
 
